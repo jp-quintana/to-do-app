@@ -1,7 +1,6 @@
-import MaxWidthContainer from '@/components/max-width-container';
-import { buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
-import React from 'react';
+import { MaxWidthContainer, ModeToggle } from '@/components';
+import { buttonVariants } from '@/components/ui/button';
 
 export const Nav = () => {
   return (
@@ -11,21 +10,26 @@ export const Nav = () => {
           <Link href="/" className="font-bold">
             Logo
           </Link>
-          <ul className="flex gap-4">
-            <li>
-              <Link
-                href="/sign-in"
-                className={buttonVariants({ variant: 'ghost' })}
-              >
-                Sign In
-              </Link>
-            </li>
-            <li>
-              <Link href="/sign-up" className={buttonVariants()}>
-                Sign Up
-              </Link>
-            </li>
-          </ul>
+          <div className="flex gap-4 items-center">
+            <ul className="flex gap-4">
+              <li>
+                <Link
+                  href="/sign-in"
+                  className={buttonVariants({ variant: 'ghost' })}
+                >
+                  Sign In
+                </Link>
+              </li>
+              <li>
+                <Link href="/sign-up" className={buttonVariants()}>
+                  Sign Up
+                </Link>
+              </li>
+            </ul>
+            <div>
+              <ModeToggle />
+            </div>
+          </div>
         </nav>
       </MaxWidthContainer>
     </div>

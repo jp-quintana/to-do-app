@@ -98,7 +98,11 @@ export const SignUpForm = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <div className="flex justify-center">
+          <Button className="text-center" type="submit">
+            Submit
+          </Button>
+        </div>
       </form>
     </Form>
   );

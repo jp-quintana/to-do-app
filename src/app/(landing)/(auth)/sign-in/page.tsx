@@ -1,8 +1,8 @@
-import { AuthForm } from '../_components/auth-form';
+import { AuthForm } from '../../_components/auth-form';
 
 const Page = () => {
   return (
-    <div>
+    <div className="my-20">
       <AuthForm />
     </div>
   );

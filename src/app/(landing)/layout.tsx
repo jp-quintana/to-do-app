@@ -7,10 +7,10 @@ interface LandingLayoutProps {
 const LandingLayout = ({ children }: LandingLayoutProps) => {
   return (
     <div>
-      <header>
+      <header className="relative">
         <Nav />
       </header>
-      <main>{children}</main>
+      {children}
     </div>
   );
 };

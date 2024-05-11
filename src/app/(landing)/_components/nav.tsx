@@ -5,7 +5,7 @@ import React from 'react';
 
 export const Nav = () => {
   return (
-    <div className="flex ">
+    <div className="flex fixed top-0 w-full bg-white">
       <MaxWidthContainer className="mx-auto">
         <nav className="flex justify-between items-center py-3">
           <Link href="/" className="font-bold">

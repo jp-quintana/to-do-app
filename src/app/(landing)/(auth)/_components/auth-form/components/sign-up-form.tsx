@@ -77,7 +77,7 @@ export const SignUpForm = () => {
           name="password"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Password</FormLabel>
               <FormControl>
                 <PasswordInput {...field} />
               </FormControl>
@@ -90,7 +90,7 @@ export const SignUpForm = () => {
           name="confirmPassword"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel>Confirm password</FormLabel>
               <FormControl>
                 <PasswordInput {...field} />
               </FormControl>

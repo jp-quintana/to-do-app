@@ -4,7 +4,7 @@ import { buttonVariants } from '@/components/ui/button';
 
 export const Nav = () => {
   return (
-    <div className="flex fixed top-0 w-full bg-white">
+    <div className="flex fixed top-0 w-full bg-background">
       <MaxWidthContainer className="mx-auto">
         <nav className="flex justify-between items-center py-3">
           <Link href="/" className="font-bold">
@@ -15,7 +15,7 @@ export const Nav = () => {
               <li>
                 <Link
                   href="/sign-in"
-                  className={buttonVariants({ variant: 'ghost' })}
+                  className={buttonVariants({ variant: 'outline' })}
                 >
                   Sign In
                 </Link>

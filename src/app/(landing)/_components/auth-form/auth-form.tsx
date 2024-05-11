@@ -1,10 +1,10 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
+import { SignInForm, SignUpForm } from './components';
 
 export const AuthForm = () => {
   const pathname = usePathname();
 
-  console.log(pathname);
-  return <div>AuthForm</div>;
+  return pathname === '/sign-in' ? <SignInForm /> : <SignUpForm />;
 };

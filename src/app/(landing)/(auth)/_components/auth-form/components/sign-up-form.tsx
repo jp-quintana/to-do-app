@@ -12,7 +12,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import PasswordInput from './password-input';
-import { signUpSchema } from '../schemas';
+import { signUpSchema } from '../../../../../../schemas';
 
 export const SignUpForm = () => {
   const form = useForm<z.infer<typeof signUpSchema>>({

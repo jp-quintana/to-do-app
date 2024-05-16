@@ -13,7 +13,7 @@ export const connectToDB = async () => {
 
     isConnected = true;
     console.log('Connected to MongoDB');
-  } catch (err) {
-    console.log(err);
+  } catch (error) {
+    console.log(error);
   }
 };

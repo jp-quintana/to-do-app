@@ -12,7 +12,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import PasswordInput from './password-input';
-import { signInSchema } from '../../../../../../schemas';
+import { signInSchema } from '@/schemas';
+import { login } from '@/lib/actions/auth.actions';
 
 export const SignInForm = () => {
   const form = useForm<z.infer<typeof signInSchema>>({
@@ -23,9 +24,11 @@ export const SignInForm = () => {
     },
   });
 
-  function onSubmit(values: z.infer<typeof signInSchema>) {
-    console.log(values);
-  }
+  const onSubmit = async (values: z.infer<typeof signInSchema>) => {
+    const result = await login(values);
+
+    console.log(result);
+  };
 
   return (
     <Form {...form}>

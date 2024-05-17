@@ -17,7 +17,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
 
           try {
             await connectToDB();
-            console.log('aca', User);
             const user = await User.findOne({ email });
 
             if (!user || !user.password) return null;

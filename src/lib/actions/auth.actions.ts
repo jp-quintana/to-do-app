@@ -5,7 +5,7 @@ import bcrypt from 'bcryptjs';
 import { signInSchema, signUpSchema } from '@/schemas';
 import { connectToDB } from '../mongoose';
 import User from '../models/user.model';
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
 import { AuthError } from 'next-auth';
 
@@ -60,4 +60,8 @@ export const login = async (values: z.infer<typeof signInSchema>) => {
     }
     throw error;
   }
+};
+
+export const logout = async () => {
+  await signOut();
 };

@@ -8,6 +8,10 @@ import bcrypt from 'bcryptjs';
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   callbacks: {
+    signIn: async ({ user }) => {
+      // console.log({ user });
+      return true;
+    },
     session: async ({ token: sessionToken, session }) => {
       if (session.user && sessionToken.sub) session.user.id = sessionToken.sub;
       if (session.user && sessionToken.lastName)
@@ -32,8 +36,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
           try {
             await connectToDB();
             const user = await User.findOne({ email });
-
-            console.log({ user });
 
             if (!user || !user.password) return null;
 

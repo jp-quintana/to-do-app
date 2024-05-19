@@ -7,6 +7,18 @@ import { connectToDB } from './lib/mongoose';
 import bcrypt from 'bcryptjs';
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
+  callbacks: {
+    session: async ({ token: sessionToken, session }) => {
+      console.log({ sessionToken, session });
+      if (session.user && sessionToken.sub) session.user.id = sessionToken.sub;
+
+      return session;
+    },
+    jwt: async ({ token, user }) => {
+      console.log({ token });
+      return token;
+    },
+  },
   providers: [
     Credentials({
       authorize: async (credentials) => {
@@ -18,6 +30,8 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
           try {
             await connectToDB();
             const user = await User.findOne({ email });
+
+            console.log({ user });
 
             if (!user || !user.password) return null;
 

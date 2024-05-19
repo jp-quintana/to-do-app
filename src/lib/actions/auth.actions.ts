@@ -14,7 +14,7 @@ export const register = async (values: z.infer<typeof signUpSchema>) => {
     const validateFields = signUpSchema.safeParse(values);
 
     if (!validateFields.success) {
-      throw new Error('Invalid fields');
+      return { error: 'Invalid fields' };
     }
 
     const { name, lastName, email, password } = values;
@@ -23,7 +23,7 @@ export const register = async (values: z.infer<typeof signUpSchema>) => {
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
-      throw new Error('User already exists');
+      return { error: 'User already exists' };
     }
 
     const salt = await bcrypt.genSalt(10);
@@ -37,7 +37,7 @@ export const register = async (values: z.infer<typeof signUpSchema>) => {
       password: encryptedPassword,
     });
   } catch (error: any) {
-    throw new Error(`Failed to create user: ${error.message}`);
+    return { error: `Failed to create user: ${error.message}` };
   }
 };
 
@@ -63,5 +63,5 @@ export const login = async (values: z.infer<typeof signInSchema>) => {
 };
 
 export const logout = async () => {
-  await signOut();
+  await signOut({ redirectTo: '/' });
 };

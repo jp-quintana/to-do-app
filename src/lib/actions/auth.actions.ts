@@ -6,7 +6,7 @@ import { signInSchema, signUpSchema } from '@/schemas';
 import { connectToDB } from '../mongoose';
 import User from '../models/user.model';
 import { signIn, signOut } from '@/auth';
-import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
+import { DEFAULT_LOGIN_REDIRECT, DEFAULT_LOGOUT_REDIRECT } from '@/routes';
 import { AuthError } from 'next-auth';
 
 export const register = async (values: z.infer<typeof signUpSchema>) => {
@@ -63,5 +63,5 @@ export const login = async (values: z.infer<typeof signInSchema>) => {
 };
 
 export const logout = async () => {
-  await signOut({ redirectTo: '/' });
+  await signOut({ redirectTo: DEFAULT_LOGOUT_REDIRECT });
 };

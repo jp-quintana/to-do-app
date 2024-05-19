@@ -9,13 +9,15 @@ import bcrypt from 'bcryptjs';
 export const { auth, handlers, signIn, signOut } = NextAuth({
   callbacks: {
     session: async ({ token: sessionToken, session }) => {
-      console.log({ sessionToken, session });
       if (session.user && sessionToken.sub) session.user.id = sessionToken.sub;
+      if (session.user && sessionToken.lastName)
+        session.user.lastName = sessionToken.lastName;
 
       return session;
     },
     jwt: async ({ token, user }) => {
-      console.log({ token });
+      if (user?.lastName) token.lastName = user.lastName;
+
       return token;
     },
   },
@@ -50,4 +52,7 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
       },
     }),
   ],
+  session: {
+    strategy: 'jwt',
+  },
 });

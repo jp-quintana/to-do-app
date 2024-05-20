@@ -1,3 +1,5 @@
+'use client';
+
 import { Separator } from '@/components/ui/separator';
 import { ToDoHeader } from './to-do-header';
 import { ToDoList } from './to-do-list';

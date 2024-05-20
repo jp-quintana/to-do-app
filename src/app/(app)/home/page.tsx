@@ -1,6 +1,6 @@
 import { auth } from '@/auth';
 import { logout } from '@/lib/actions/auth.actions';
-import ToDoContainer from './_components/to-do/components/to-do-container';
+import { ToDoContainer } from './_components/to-do/components';
 
 const Page = async () => {
   const session = await auth();

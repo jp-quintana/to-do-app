@@ -3,7 +3,7 @@ interface LandingLayoutProps {
 }
 
 const AppLayout = ({ children }: LandingLayoutProps) => {
-  return <div>{children}</div>;
+  return <div className="relative">{children}</div>;
 };
 
 export default AppLayout;

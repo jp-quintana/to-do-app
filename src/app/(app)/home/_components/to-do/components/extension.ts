@@ -4,7 +4,7 @@ import { ReactNodeViewRenderer } from '@tiptap/react';
 import { ToDoNode } from './to-do-node';
 
 export default Node.create({
-  name: 'reactComponent',
+  name: 'toDoNode',
 
   group: 'block',
 

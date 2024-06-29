@@ -16,10 +16,10 @@ export const ToDoNode = ({ node, deleteNode }: ToDoNodeProps) => {
   };
 
   return (
-    <NodeViewWrapper className=" flex gap-x-3 items-center">
+    <NodeViewWrapper className="hover:bg-muted-foreground/10 rounded-sm flex gap-x-3 items-center">
       <div
         onClick={handleDone}
-        className="flex justify-center items-center relative group cursor-pointer"
+        className="flex justify-center items-center relative group cursor-pointer py-1"
       >
         <Check
           size={14}

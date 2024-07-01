@@ -37,6 +37,7 @@ export default Node.create({
   },
 
   addNodeView() {
-    return ReactNodeViewRenderer(ToDoNode);
+    return ReactNodeViewRenderer(ToDoNode, { contentDOMElementTag: 'p' });
+    // return ReactNodeViewRenderer(ToDoNode);
   },
 });

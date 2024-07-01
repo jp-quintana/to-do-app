@@ -19,7 +19,19 @@ export const ToDoList = () => {
         types: [],
       }),
     ],
-    content: `<react-component />`,
+    content: JSON.parse(
+      window.localStorage.getItem('editor-content') ||
+        '{"type":"doc","content":[{"type":"toDoNode"}]}'
+    ),
+    onUpdate: ({ editor }) => {
+      if (editor.state.doc.textContent.trim().length === 0)
+        editor.commands.setContent({
+          type: 'doc',
+          content: [{ type: 'toDoNode' }],
+        });
+      const jsonContent = JSON.stringify(editor.getJSON());
+      window.localStorage.setItem('editor-content', jsonContent);
+    },
   });
 
   return <EditorContent editor={editor} />;

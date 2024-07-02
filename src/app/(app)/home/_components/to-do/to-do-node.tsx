@@ -1,5 +1,6 @@
 'use client';
 
+import { Checkbox } from '@/components/ui/checkbox';
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/react';
 
 import { Circle, Check } from 'lucide-react';
@@ -30,6 +31,10 @@ export const ToDoNode = ({ node, deleteNode }: ToDoNodeProps) => {
           <Circle />
         </div>
       </div>
+      {/* <Checkbox
+        onCheckedChange={handleDone}
+        className="absolute top-2 left-1"
+      /> */}
       <div className="pl-8">
         <NodeViewContent />
       </div>

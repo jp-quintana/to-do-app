@@ -10,6 +10,14 @@ export default Node.create({
 
   content: 'inline*',
 
+  addAttributes() {
+    return {
+      done: {
+        default: false,
+      },
+    };
+  },
+
   parseHTML() {
     return [
       {
@@ -38,6 +46,5 @@ export default Node.create({
 
   addNodeView() {
     return ReactNodeViewRenderer(ToDoNode, { contentDOMElementTag: 'p' });
-    // return ReactNodeViewRenderer(ToDoNode);
   },
 });

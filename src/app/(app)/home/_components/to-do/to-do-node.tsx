@@ -8,17 +8,24 @@ import { Circle, Check } from 'lucide-react';
 interface ToDoNodeProps {
   node: any;
   deleteNode: () => void;
+  updateAttributes: any;
 }
 
-export const ToDoNode = ({ node, deleteNode }: ToDoNodeProps) => {
+export const ToDoNode = ({
+  node,
+  deleteNode,
+  updateAttributes,
+}: ToDoNodeProps) => {
   const handleDone = () => {
-    console.log(node.textContent);
+    updateAttributes({
+      done: !node.attrs.done,
+    });
     // deleteNode();
   };
 
   return (
     <NodeViewWrapper className="hover:bg-muted-foreground/10 rounded-sm flex gap-x-3 items-center py-1 relative">
-      <div className="absolute top-1">
+      {/* <div className="absolute top-1">
         <div
           onClick={handleDone}
           className="flex justify-center items-center relative group cursor-pointer"
@@ -30,11 +37,12 @@ export const ToDoNode = ({ node, deleteNode }: ToDoNodeProps) => {
           />
           <Circle />
         </div>
-      </div>
-      {/* <Checkbox
+      </div> */}
+      <Checkbox
+        defaultChecked={node.attrs.done}
         onCheckedChange={handleDone}
         className="absolute top-2 left-1"
-      /> */}
+      />
       <div className="pl-8">
         <NodeViewContent />
       </div>

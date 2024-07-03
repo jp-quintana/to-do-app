@@ -16,7 +16,7 @@ export const ToDoList = () => {
         showOnlyCurrent: false,
       }),
       UniqueID.configure({
-        types: [],
+        types: ['toDoNode'],
       }),
     ],
     content: JSON.parse(

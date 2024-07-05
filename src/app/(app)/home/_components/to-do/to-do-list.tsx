@@ -1,5 +1,7 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { useDebounce } from '@/app/hooks/useDebounce';
 import Placeholder from '@tiptap/extension-placeholder';
 import { useEditor, EditorContent } from '@tiptap/react';
 import StarterKit from '@tiptap/starter-kit';
@@ -7,6 +9,16 @@ import ReactComponent from './extension';
 import UniqueID from '@tiptap-pro/extension-unique-id';
 
 export const ToDoList = () => {
+  const [input, setInput] = useState('');
+
+  const debounceValue = useDebounce(input);
+
+  useEffect(() => {
+    if (debounceValue) {
+      window.localStorage.setItem('editor-content', debounceValue);
+    }
+  }, [debounceValue]);
+
   const editor = useEditor({
     extensions: [
       StarterKit,
@@ -29,8 +41,11 @@ export const ToDoList = () => {
           type: 'doc',
           content: [{ type: 'toDoNode' }],
         });
-      const jsonContent = JSON.stringify(editor.getJSON());
-      window.localStorage.setItem('editor-content', jsonContent);
+
+      setInput(JSON.stringify(editor.getJSON()));
+
+      // const jsonContent = JSON.stringify(editor.getJSON());
+      // window.localStorage.setItem('editor-content', jsonContent);
     },
   });
 

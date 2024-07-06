@@ -39,11 +39,11 @@ export const ToDoNode = ({
         </div>
       </div> */}
       <Checkbox
-        defaultChecked={node.attrs.done}
+        // defaultChecked={node.attrs.done}
         onCheckedChange={handleDone}
         className="absolute top-2 left-1"
       />
-      <div className="pl-8">
+      <div className="pl-8 w-full">
         <NodeViewContent />
       </div>
     </NodeViewWrapper>

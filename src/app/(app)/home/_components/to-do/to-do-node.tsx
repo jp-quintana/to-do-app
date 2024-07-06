@@ -3,7 +3,7 @@
 import { Checkbox } from '@/components/ui/checkbox';
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/react';
 
-import { Circle, Check } from 'lucide-react';
+import { Circle, Check, Square } from 'lucide-react';
 
 interface ToDoNodeProps {
   node: any;
@@ -38,12 +38,13 @@ export const ToDoNode = ({
           <Circle />
         </div>
       </div> */}
-      <Checkbox
-        // defaultChecked={node.attrs.done}
+      {/* <Checkbox
+        defaultChecked={node.attrs.done}
         onCheckedChange={handleDone}
         className="absolute top-2 left-1"
-      />
-      <div className="pl-8 w-full">
+      /> */}
+      <Square onClick={handleDone} className="absolute top-1 left-1" />
+      <div className="pl-9 w-full">
         <NodeViewContent />
       </div>
     </NodeViewWrapper>

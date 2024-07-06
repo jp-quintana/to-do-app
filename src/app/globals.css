@@ -69,3 +69,15 @@
   height: 0;
   pointer-events: none;
 }
+
+.is-editor-empty {
+  padding: 4px 0;
+}
+
+.is-editor-empty::before {
+  color: #adb5bd;
+  content: 'Write something...';
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

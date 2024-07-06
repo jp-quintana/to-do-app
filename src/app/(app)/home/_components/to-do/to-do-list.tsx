@@ -36,16 +36,39 @@ export const ToDoList = () => {
         '{"type":"doc","content":[{"type":"toDoNode"}]}'
     ),
     onUpdate: ({ editor }) => {
-      if (editor.state.doc.textContent.trim().length === 0)
+      if (
+        editor.state.doc.textContent.trim().length === 1 &&
+        editor.getJSON().content?.[0].type === 'paragraph'
+      ) {
         editor.commands.setContent({
           type: 'doc',
-          content: [{ type: 'toDoNode' }],
+          content: [
+            {
+              type: 'toDoNode',
+              content: [{ type: 'text', text: editor.state.doc.textContent }],
+            },
+          ],
         });
+      }
+
+      if (
+        editor.state.doc.textContent.trim().length > 1 &&
+        editor.getJSON().content?.[0].type === 'paragraph'
+      ) {
+        const json = editor.getJSON();
+        json.content?.shift();
+        editor.commands.setContent(json);
+        editor.commands.focus('start');
+      }
+
+      // if (editor.state.doc.textContent.trim().length === 0) {
+      //   editor.commands.setContent({
+      //     type: 'doc',
+      //     content: [{ type: 'toDoNode' }],
+      //   });
+      // }
 
       setInput(JSON.stringify(editor.getJSON()));
-
-      // const jsonContent = JSON.stringify(editor.getJSON());
-      // window.localStorage.setItem('editor-content', jsonContent);
     },
   });
 

@@ -1,9 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
 import { Checkbox } from '@/components/ui/checkbox';
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/react';
 
 import { Circle, Check, Square, SquareCheck, GripVertical } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 interface ToDoNodeProps {
   node: any;
@@ -16,17 +19,34 @@ export const ToDoNode = ({
   deleteNode,
   updateAttributes,
 }: ToDoNodeProps) => {
+  const [drag, setDrag] = useState(false);
+  const [done, setDone] = useState(false);
+
   const handleDone = () => {
+    setDone(true);
     updateAttributes({
-      done: !node.attrs.done,
+      done: true,
     });
-    console.log(node);
-    // deleteNode();
+
+    setTimeout(() => {
+      deleteNode();
+    }, 700);
   };
 
   return (
-    <NodeViewWrapper className="hover:bg-muted-foreground/10 rounded-sm flex gap-x-3 items-center py-1 relative group">
-      <GripVertical className="absolute left-[-24px] opacity-0 group-hover:opacity-100 transition-opacity cursor-grab" />
+    <NodeViewWrapper
+      className={cn(
+        'hover:bg-muted-foreground/10 rounded-sm flex gap-x-3 items-center py-1 relative group select-none',
+        done && 'opacity-0 transition-opacity duration-700'
+      )}
+      contentEditable={!drag && !node.attrs.done}
+    >
+      <GripVertical
+        onMouseDown={() => setDrag(true)}
+        onMouseMove={() => setDrag(false)}
+        className="absolute left-[-24px] opacity-0 group-hover:opacity-100 transition-opacity cursor-grab select-none"
+        data-drag-handle
+      />
       {/* <div className="absolute top-1">
         <div
           onClick={handleDone}
@@ -48,13 +68,10 @@ export const ToDoNode = ({
       {!node.attrs.done ? (
         <Square
           onClick={handleDone}
-          className="absolute top-1 left-1 cursor-pointer"
+          className="absolute top-1 left-1 cursor-pointer select-none"
         />
       ) : (
-        <SquareCheck
-          onClick={handleDone}
-          className="absolute top-1 left-1 cursor-pointer"
-        />
+        <SquareCheck className="absolute top-1 left-1 cursor-pointer select-none" />
       )}
 
       <div className="pl-9 w-full">

@@ -33,6 +33,7 @@ export const ToDoList = () => {
     ],
     content: JSON.parse(window.localStorage.getItem('editor-content') || ''),
     onUpdate: ({ editor }) => {
+      console.log(editor.state);
       if (
         editor.state.doc.textContent.trim().length === 1 &&
         editor.getJSON().content?.[0].type === 'paragraph'

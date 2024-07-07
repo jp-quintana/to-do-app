@@ -10,6 +10,8 @@ export default Node.create({
 
   content: 'inline*',
 
+  draggable: true,
+
   addAttributes() {
     return {
       done: {

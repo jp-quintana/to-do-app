@@ -44,7 +44,10 @@ export const ToDoNode = ({
       <GripVertical
         onMouseDown={() => setDrag(true)}
         onMouseMove={() => setDrag(false)}
-        className="absolute left-[-24px] opacity-0 group-hover:opacity-100 transition-opacity cursor-grab select-none"
+        className={cn(
+          'absolute left-[-24px] opacity-0 group-hover:opacity-100 transition-opacity cursor-grab select-none',
+          done && 'pointer-events-none'
+        )}
         data-drag-handle
       />
       {/* <div className="absolute top-1">

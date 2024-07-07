@@ -31,10 +31,7 @@ export const ToDoList = () => {
         types: ['toDoNode'],
       }),
     ],
-    content: JSON.parse(
-      window.localStorage.getItem('editor-content') ||
-        '{"type":"doc","content":[{"type":"toDoNode"}]}'
-    ),
+    content: JSON.parse(window.localStorage.getItem('editor-content') || ''),
     onUpdate: ({ editor }) => {
       if (
         editor.state.doc.textContent.trim().length === 1 &&

@@ -3,7 +3,7 @@
 import { Checkbox } from '@/components/ui/checkbox';
 import { NodeViewContent, NodeViewWrapper } from '@tiptap/react';
 
-import { Circle, Check, Square } from 'lucide-react';
+import { Circle, Check, Square, SquareCheck, GripVertical } from 'lucide-react';
 
 interface ToDoNodeProps {
   node: any;
@@ -20,11 +20,13 @@ export const ToDoNode = ({
     updateAttributes({
       done: !node.attrs.done,
     });
+    console.log(node);
     // deleteNode();
   };
 
   return (
-    <NodeViewWrapper className="hover:bg-muted-foreground/10 rounded-sm flex gap-x-3 items-center py-1 relative">
+    <NodeViewWrapper className="hover:bg-muted-foreground/10 rounded-sm flex gap-x-3 items-center py-1 relative group">
+      <GripVertical className="absolute left-[-24px] opacity-0 group-hover:opacity-100 transition-opacity cursor-grab" />
       {/* <div className="absolute top-1">
         <div
           onClick={handleDone}
@@ -43,7 +45,18 @@ export const ToDoNode = ({
         onCheckedChange={handleDone}
         className="absolute top-2 left-1"
       /> */}
-      <Square onClick={handleDone} className="absolute top-1 left-1" />
+      {!node.attrs.done ? (
+        <Square
+          onClick={handleDone}
+          className="absolute top-1 left-1 cursor-pointer"
+        />
+      ) : (
+        <SquareCheck
+          onClick={handleDone}
+          className="absolute top-1 left-1 cursor-pointer"
+        />
+      )}
+
       <div className="pl-9 w-full">
         <NodeViewContent />
       </div>

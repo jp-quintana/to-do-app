@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Input, InputProps } from '@/components/ui/input';
 import { Eye, EyeOff } from 'lucide-react';
 
-const PasswordInput = (props: InputProps) => {
+export const PasswordInput = (props: InputProps) => {
   const [show, setShow] = useState(false);
 
   return (
@@ -20,5 +20,3 @@ const PasswordInput = (props: InputProps) => {
     </div>
   );
 };
-
-export default PasswordInput;

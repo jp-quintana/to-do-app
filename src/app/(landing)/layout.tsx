@@ -1,4 +1,4 @@
-import { Nav } from './_components';
+import { Nav } from './_components/nav';
 
 interface LandingLayoutProps {
   children: React.ReactNode;

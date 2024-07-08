@@ -1,9 +1,9 @@
-import { AuthForm } from '../_components/auth-form';
+import { AuthContainer } from '../_components/auth-form';
 
 const Page = () => {
   return (
     <div>
-      <AuthForm />
+      <AuthContainer />
     </div>
   );
 };

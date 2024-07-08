@@ -57,3 +57,27 @@
     @apply bg-background text-foreground;
   }
 }
+
+.ProseMirror:focus {
+  outline: none;
+}
+
+.tiptap div.my-custom-is-empty-class div div p::before {
+  color: #adb5bd;
+  content: 'To-do';
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+.is-editor-empty {
+  padding: 4px 0;
+}
+
+.is-editor-empty::before {
+  color: #adb5bd;
+  content: 'Write something...';
+  float: left;
+  height: 0;
+  pointer-events: none;
+}

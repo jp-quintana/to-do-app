@@ -30,14 +30,14 @@ export const ToDoNode = ({
 
     setTimeout(() => {
       deleteNode();
-    }, 700);
+    }, 300);
   };
 
   return (
     <NodeViewWrapper
       className={cn(
         'hover:bg-muted-foreground/10 rounded-sm flex gap-x-3 items-center py-1 relative group select-none',
-        done && 'opacity-0 transition-opacity duration-700'
+        done && 'opacity-0 transition-opacity duration-300'
       )}
       contentEditable={!drag && !node.attrs.done}
     >
